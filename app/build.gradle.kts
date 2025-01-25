@@ -2,17 +2,16 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.serialization")
-    id("org.jetbrains.kotlin.plugin.parcelize")
     id("kotlin-kapt")
 }
 
 android {
     compileSdk = libs.versions.compileSdk.get().toInt()
     buildToolsVersion = libs.versions.buildTools.get()
-    namespace = "x.code.app"
+    namespace = "io.github.code.app"
 
     defaultConfig {
-        applicationId = "x.code.app"
+        applicationId = "io.github.code.app"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
@@ -27,12 +26,12 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    
+
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "17"
     }
 	
 	buildFeatures {
@@ -52,7 +51,6 @@ dependencies {
     implementation(project(":document"))
     implementation(project(":piecetable"))
     implementation(project(":treesitter"))
-    implementation(project(":treeview"))
     
     // Dependency on local binaries
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
