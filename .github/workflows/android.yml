@@ -20,7 +20,10 @@ jobs:
 
     steps:
     # Step 1: Check out the repository
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        submodules: 'true'
 
     # Step 2: Set up JDK 17
     - name: Set up JDK 17
@@ -75,7 +78,10 @@ jobs:
 
     steps:
     # Step 1: Check out the repository
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        submodules: 'true'
 
     # Step 2: Download the Release APK
     - name: Download Release APK
