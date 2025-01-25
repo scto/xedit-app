@@ -7,6 +7,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
@@ -14,14 +15,15 @@ dependencyResolutionManagement {
             setUrl("https://jitpack.io")
         }
     }
+    
     versionCatalogs {
-      create("libs") {
-        from(files("gradle/libs.versions.toml"))
-      }
+        create("libs") {
+            from(files("libs.versions.toml"))
+        }
     }
 }
 
-rootProject.name = "xedit-app"
+rootProject.name = "CodePad"
 include(
     ":app",
     ":alerter",
@@ -30,6 +32,5 @@ include(
     ":editor", 
     ":document", 
     ":piecetable", 
-    ":treesitter",
-    ":treeview"
+    ":treesitter"
 )
