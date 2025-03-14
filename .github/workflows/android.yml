@@ -30,23 +30,31 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    # Step 3: Grant execute permission for gradlew
+    # Step 3: Setup Android SDK
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+
+    # Step 4: Install CMake
+    - name: Install CMake 3.30.5
+      run: sdkmanager --install "cmake;3.30.5"
+      
+    # Step 5: Grant execute permission for gradlew
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    # Step 4: Clean the project
+    # Step 6: Clean the project
     - name: Clean project
       run: ./gradlew clean
 
-    # Step 5: Build Debug APK
+    # Step 7: Build Debug APK
     - name: Build Debug APK
       run: ./gradlew assembleDebug
 
-    # Step 6: Check if Debug APK exists
+    # Step 8: Check if Debug APK exists
     - name: Check Debug APK
       run: ls -la app/build/outputs/apk/debug/
 
-    # Step 7: Archive the Debug APK
+    # Step 9: Archive the Debug APK
     - name: Archive Debug APK
       uses: actions/upload-artifact@master
       with:
